@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Repository
 public class CompanyRepository {
@@ -61,8 +63,20 @@ public class CompanyRepository {
 
     public List<Company> findByPage(Integer page, Integer pageSize) {
         return companies.stream()
-                .skip((long) (page - 1) * pageSize)
+                .skip((long) page * pageSize)
                 .limit(pageSize)
                 .collect(Collectors.toList());
+    }
+
+
+    public Company create(Company company) {
+        Integer nextId = companies.stream()
+                .mapToInt(Company::getId)
+                .max()
+                .orElse(0) + 1;
+
+        company.setId(nextId);
+        companies.add(company);
+        return company;
     }
 }
