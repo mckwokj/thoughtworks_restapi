@@ -61,4 +61,9 @@ public class EmployeeRepository {
         employees.add(updatedEmployee);
         return updatedEmployee;
     }
+
+    public void remove(Integer id) {
+        Employee employee = findById(id);
+        employees.remove(employee);
+    }
 }
