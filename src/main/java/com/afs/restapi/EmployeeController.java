@@ -35,12 +35,12 @@ public class EmployeeController {
         return employeeRepository.findByPage(page, pageSize);
     }
 
-//    @ResponseStatus(HttpStatus.CREATED)
-//    @PostMapping
-//    public Employee createEmployee(@RequestBody Employee employee) {
-//        return employeeRepository.create(employee);
-//    }
-//
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping
+    public Employee createEmployee(@RequestBody Employee employee) {
+        return employeeRepository.create(employee);
+    }
+
 //    @PutMapping("/{id}")
 //    public Employee editEmployee(@PathVariable  Integer id, @RequestBody Employee updatedEmployee) {
 //        Employee employee = employeeRepository.findById(id);
