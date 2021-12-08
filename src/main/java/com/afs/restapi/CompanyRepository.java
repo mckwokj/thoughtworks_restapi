@@ -5,8 +5,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 @Repository
 public class CompanyRepository {
@@ -55,10 +53,8 @@ public class CompanyRepository {
     }
 
     public List<Employee> findEmployeesByCompany(Integer id) {
-        return companies.stream()
-                .filter(company -> company.getId().equals(id))
-                .findFirst()
-                .get().getEmployees();
+        Company company = findById(id);
+        return company.getEmployees();
     }
 
     public List<Company> findByPage(Integer page, Integer pageSize) {
