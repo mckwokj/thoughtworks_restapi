@@ -47,11 +47,12 @@ public class CompanyController {
             company.setCompanyName(updatedCompany.getCompanyName());
         }
 
+        // todo cannot edit employees
         if (updatedCompany.getEmployees() != null) {
             company.setEmployees(updatedCompany.getEmployees());
         }
 
-        return companyRepository.save(id, updatedCompany);
+        return companyRepository.save(id, company);
     }
 
     @DeleteMapping("/{id}")

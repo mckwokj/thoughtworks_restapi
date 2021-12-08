@@ -53,7 +53,7 @@ public class EmployeeController {
             employee.setSalary(updatedEmployee.getSalary());
         }
 
-        return employeeRepository.save(id, updatedEmployee);
+        return employeeRepository.save(id, employee);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
